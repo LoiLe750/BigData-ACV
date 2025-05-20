@@ -50,7 +50,7 @@ if uploaded_file is not None:
         st.bar_chart(df)
     else:
         st.write("Aucun graphique sélectionné.")
-st.write("Merci d'avoir utilisé notre application Streamlit !")
+
 
 # 7.Calcul et affichage des corrélations
 st.subheader("📉 Matrice de corrélation")
@@ -61,3 +61,5 @@ import numpy as np
 # Checkbox
 if st.checkbox("Afficher un tableau aléatoire"):
     st.write(pd.DataFrame(np.random.randn(5, 3), columns=['A', 'B', 'C']))
+
+st.write("Merci d'avoir utilisé notre application Streamlit !")
