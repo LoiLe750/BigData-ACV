@@ -53,9 +53,18 @@ if uploaded_file is not None:
 
 
 # 7.Calcul et affichage des corrélations
-st.subheader("📉 Matrice de corrélation")
-corr = df.select_dtypes(include='number').corr()
-st.dataframe(corr)
+    st.subheader("📈 Matrice de corrélation")
+    corr = df.select_dtypes(include='number').corr()
+    fig_corr = px.imshow(corr, text_auto=True, aspect="auto", title="Matrice de corrélation")
+    st.plotly_chart(fig_corr)
+#8. Bonus : utiliser des st.selectbox
+    st.subheader("🔍 Visualisation personnalisée")
+    numeric_columns = df.select_dtypes(include='number').columns.tolist()
+    if len(numeric_columns) >= 2:
+        x_col = st.selectbox("Choisissez la variable X", numeric_columns)
+        y_col = st.selectbox("Choisissez la variable Y", numeric_columns)
+        fig = px.scatter(df, x=x_col, y=y_col, title=f"{x_col} vs {y_col}")
+        st.plotly_chart(fig)
 
 import numpy as np
 # Checkbox
